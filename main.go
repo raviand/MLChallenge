@@ -124,6 +124,10 @@ func setupRouter() *gin.Engine {
 
 	})
 
+	r.NoRoute(func(c *gin.Context) {
+		c.Data(http.StatusOK, "text/html; charset=utf-8", []byte(`<img src="https://cdn.dribbble.com/users/1963449/screenshots/5915645/404_not_found_2x.png" alt="Bad Request" style="width:800px;height:600px;" />`))
+	})
+
 	return r
 }
 func GetItemData(client *sdk.Client, itemId string) (*model.ItemInterface, error) {
